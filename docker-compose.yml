@@ -1,0 +1,15 @@
+services:
+  L2tp:
+    image: hwdsl2/ipsec-vpn-server
+    privileged: true
+    restart: always
+    env_file:
+      - ./config.env 
+    ports:
+      - "500:500/udp"
+      - "4500:4500/udp"
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - /lib/modules:/lib/modules:ro
+    privileged: true
+    container_name: l2tp
